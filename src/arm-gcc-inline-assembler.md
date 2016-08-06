@@ -41,16 +41,18 @@ Tidy Jiang 译.
 
 - 原文链接：[http://www.ethernut.de/en/documents/arm-inline-asm.html](http://www.ethernut.de/en/documents/arm-inline-asm.html)
 - 本文档已有中文译文，翻译于2009年：[http://blog.chinaunix.net/uid-20706279-id-1888741.html](http://blog.chinaunix.net/uid-20706279-id-1888741.html)
-- 本文档英文原版已有多次更新，更改、新增的内容较多，详细修改历史请参考文档末尾 *文档历史* 一节。
-- 本文主体容是按照英文原文翻译的，只有在遇到极个别不理解的地方才参考了中文译文。
+- 本文档英文原版已有多次更新，更改、新增的内容较多，详细修改历史请参考文档末尾 *文档历史* 一节
+- 本文主体容是按照英文原文翻译的，只有在遇到极个别不理解的地方才参考了中文译文
 - 在翻译本文时，本人尽量做到先理解，再翻译，以便更准确地将原文的意思呈现出来
 - 如有**任何**问题，请前往如下地址参与评论、讨论：
   - CSDN 博客：[http://blog.csdn.net/tidyjiang/article/details/52138598](http://blog.csdn.net/tidyjiang/article/details/52138598)
   - 个人博客：[http://iot-fans.xyz/2016/08/05/zephyr/other-inline-assembler/](http://iot-fans.xyz/2016/08/05/zephyr/other-inline-assembler/)
+  - 个人博客：[http://iot-fans.xyz/release/zephyr/arm-gcc-inline-assembler.html](http://iot-fans.xyz/release/zephyr/arm-gcc-inline-assembler.html)
   - GitHub：[https://github.com/tidyjiang8/arm-gcc-inline-assembler](https://github.com/tidyjiang8/arm-gcc-inline-assembler)
 - 离线收藏、阅读请前往如下地址下载：
   - 个人博客：[http://iot-fans.xyz/release/zephyr/arm-gcc-inline-assembler.pdf](http://iot-fans.xyz/release/zephyr/arm-gcc-inline-assembler.pdf)
   - GitHub: [https://github.com/tidyjiang8/arm-gcc-inline-assembler](https://github.com/tidyjiang8/arm-gcc-inline-assembler)
+- 字数统计：6403 字
 
 
 
@@ -446,24 +448,24 @@ asm volatile(
 
 比较好的学习方法是分析编译后的汇编清单，并学习 C 编译器生成的代码。下面的表格是编译器典型使用的 ARM 寄存器，知道这些将有助于理解代码。
 
-| **寄存器** | **别名**      | **用途**                                   |
-| ------- | ----------- | ---------------------------------------- |
-| r0      | a1          | First function argument            Integer function result            Scratch register |
-| r1      | a2          | Second function argument            Scratch register |
-| r2      | a3          | Third function argument            Scratch register |
-| r3      | a4          | Fourth function argument            Scratch register |
-| r4      | v1          | Register variable                        |
-| r5      | v2          | Register variable                        |
-| r6      | v3          | Register variable                        |
-| r7      | v4          | Register variable                        |
-| r8      | v5          | Register variable                        |
-| r9      | v6 </br>rfp | Register variable            Real frame pointer |
-| r10     | sl          | Stack limit                              |
-| r11     | fp          | Argument pointer                         |
-| r12     | ip          | Temporary workspace                      |
-| r13     | sp          | Stack pointer                            |
-| r14     | lr          | Link register            Workspace       |
-| r15     | pc          | 程序计数                                     |
+| **寄存器** | **别名**      | **用途**                  |
+| ------- | ----------- | ----------------------- |
+| r0      | a1          | 第一个函数参数 <br>Scratch 寄存器 |
+| r1      | a2          | 第二个函数参数 <br>Scratch 寄存器 |
+| r2      | a3          | 第三个函数参数<br>Scratch 寄存器  |
+| r3      | a4          | 第四个函数参数<br>Scratch 寄存器  |
+| r4      | v1          | 寄存器变量                   |
+| r5      | v2          | 寄存器变量                   |
+| r6      | v3          | 寄存器变量                   |
+| r7      | v4          | 寄存器变量                   |
+| r8      | v5          | 寄存器变量                   |
+| r9      | v6 </br>rfp | 寄存器变量<br>实际的帧指针         |
+| r10     | sl          | 栈接线                     |
+| r11     | fp          | 参数指针                    |
+| r12     | ip          | 临时                      |
+| r13     | sp          | 栈指针                     |
+| r14     | lr          | 连接寄存器                   |
+| r15     | pc          | 程序计数                    |
 
 # 常见陷阱
 
